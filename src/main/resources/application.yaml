@@ -29,3 +29,8 @@ spring:
     property-naming-strategy: SNAKE_CASE
     serialization:
       INDENT_OUTPUT: true
+
+jwt:
+  secret: ${JWT.SECRET}
+  issuer: ${JWT.ISSUER}
+  duration_second: ${JWT.DURATION_TIME}
