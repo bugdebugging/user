@@ -7,6 +7,7 @@ import ac.kr.kw.judge.user.service.command.AuthLoginCommand;
 import ac.kr.kw.judge.user.service.port.in.AuthLoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,7 +16,7 @@ public class AuthLoginController {
     private final AuthLoginService authLoginService;
 
     @PostMapping("/api/users/login")
-    public ApiResult login(AuthLoginRequest authLoginRequest) {
+    public ApiResult login(@RequestBody AuthLoginRequest authLoginRequest) {
         String token = authLoginService.login(new AuthLoginCommand(authLoginRequest.getUsername(), authLoginRequest.getPassword()));
         return ApiUtils.success(token);
     }

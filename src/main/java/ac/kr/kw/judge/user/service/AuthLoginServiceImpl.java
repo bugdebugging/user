@@ -25,7 +25,7 @@ public class AuthLoginServiceImpl implements AuthLoginService {
                 .orElseThrow(() -> {
                     throw new UnAuthorizedException("해당 username의 사용자는 존재하지 않습니다.");
                 });
-        if (!passwordEncoder.encode(command.getPassword()).equals(user.getPassword())) {
+        if(!passwordEncoder.matches(command.getPassword(),user.getPassword())){
             throw new UnAuthorizedException("password가 잘못됬습니다.");
         }
         return jwtUtils.createTokenWithUsername(user.getUsername());

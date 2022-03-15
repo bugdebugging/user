@@ -10,16 +10,15 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Component
-@RequiredArgsConstructor
 public class JwtUtils {
     @Value("${jwt.secret}")
-    private final String secret;
+    private String secret;
 
     @Value("${jwt.issuer}")
-    private final String issuer;
+    private String issuer;
 
     @Value("${jwt.duration_second}")
-    private final long durationSecond;
+    private long durationSecond;
 
     public String createTokenWithUsername(String username) {
         Algorithm algorithm = Algorithm.HMAC512(secret);
