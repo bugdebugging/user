@@ -18,6 +18,12 @@ repositories {
     mavenCentral()
 }
 
+test {
+    environment "JWT.SECRET", "judge_secret"
+    environment "JWT.ISSUER", "k-judge"
+    environment "JWT.DURATION_TIME", "600"
+}
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
