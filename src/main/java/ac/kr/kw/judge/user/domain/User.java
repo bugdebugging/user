@@ -19,6 +19,9 @@ public class User {
     @Column
     private String password;
 
+    @Column
+    private int accumulateScore;
+
     @Enumerated(EnumType.STRING)
     private Rank rank;
 
@@ -32,6 +35,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.rank = Rank.BRONZE.getDefaultRank();
+        this.accumulateScore = 0;
     }
 
     public static User of(String username, String password) {
@@ -52,6 +56,10 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public int getAccumulateScore() {
+        return accumulateScore;
     }
 
     public Rank getRank() {
