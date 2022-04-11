@@ -29,7 +29,13 @@ spring:
     property-naming-strategy: SNAKE_CASE
     serialization:
       INDENT_OUTPUT: true
-
+  kafka:
+    consumer:
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
+      group-id: grade-consumer-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
 jwt:
   secret: ${JWT.SECRET}
   issuer: ${JWT.ISSUER}

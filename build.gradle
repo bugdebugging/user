@@ -22,6 +22,7 @@ test {
     environment "JWT.SECRET", "judge_secret"
     environment "JWT.ISSUER", "k-judge"
     environment "JWT.DURATION_TIME", "600"
+    environment "KAFKA_BOOTSTRAP_SERVERS", "localhost:9092"
 }
 
 dependencies {
@@ -36,6 +37,7 @@ dependencies {
     implementation group: 'org.springframework.security', name: 'spring-security-crypto', version: '5.6.2'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.springframework.kafka:spring-kafka'
 }
 
 tasks.named('test') {
