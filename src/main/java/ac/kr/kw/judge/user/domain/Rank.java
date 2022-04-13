@@ -1,7 +1,7 @@
 package ac.kr.kw.judge.user.domain;
 
 public enum Rank {
-    GOLD("GOLD", null, 3000), SILVER("SILVER", GOLD, 2000), BRONZE("BRONZE", SILVER, 1000);
+    GOLD("GOLD", null, 3000), SILVER("SILVER", GOLD, 2000), BRONZE("BRONZE", SILVER, 1000), NONE("NONE", BRONZE, 0);
 
     private String value;
     private Rank nextLevel;
@@ -24,7 +24,18 @@ public enum Rank {
     public int getBoundScore() {
         return boundScore;
     }
-    public Rank getDefaultRank(){
+
+    public static Rank getDefaultRank() {
         return BRONZE;
+    }
+
+    public boolean canUpgradeToNextRank(int score) {
+        if (nextLevel == null) {
+            return false;
+        }
+        if (nextLevel.getBoundScore() > score) {
+            return false;
+        }
+        return true;
     }
 }

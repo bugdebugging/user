@@ -34,7 +34,7 @@ public class User {
     private User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.rank = Rank.BRONZE.getDefaultRank();
+        this.rank = Rank.getDefaultRank();
         this.accumulateScore = 0;
     }
 
@@ -44,6 +44,13 @@ public class User {
 
     protected User() {
         //empty
+    }
+
+    public void increaseScore(int score) {
+        this.accumulateScore += score;
+        if (rank.canUpgradeToNextRank(accumulateScore)) {
+            rank = rank.getNextLevel();
+        }
     }
 
     public Long getId() {
