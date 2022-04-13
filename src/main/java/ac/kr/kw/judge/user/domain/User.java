@@ -48,7 +48,7 @@ public class User {
 
     public void increaseScore(int score) {
         this.accumulateScore += score;
-        if (rank.canUpgradeToNextRank(accumulateScore)) {
+        while (rank.canUpgradeToNextRank(accumulateScore)) {
             rank = rank.getNextLevel();
         }
     }
