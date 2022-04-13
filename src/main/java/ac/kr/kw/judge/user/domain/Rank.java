@@ -26,7 +26,7 @@ public enum Rank {
     }
 
     public static Rank getDefaultRank() {
-        return BRONZE;
+        return NONE;
     }
 
     public boolean canUpgradeToNextRank(int score) {
