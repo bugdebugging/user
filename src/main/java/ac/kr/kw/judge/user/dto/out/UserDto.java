@@ -18,4 +18,20 @@ public class UserDto {
     public static UserDto fromEntity(User user) {
         return new UserDto(user.getId(), user.getUsername(), user.getAccumulateScore(), user.getRank().getValue());
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAccumulateScore() {
+        return accumulateScore;
+    }
+
+    public String getRank() {
+        return rank;
+    }
 }
